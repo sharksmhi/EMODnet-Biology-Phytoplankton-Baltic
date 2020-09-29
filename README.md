@@ -1,4 +1,4 @@
-*Biological data preprocessing by Markus Lindh, original scripts by Luuk van der Heijden developed for processing North Sea phytoplankton data*
+*Biological data preprocessing by Markus Lindh, original scripts by Luuk van der Heijden developed for processing North Sea phytoplankton data, please see https://github.com/EMODnet/EMODnet-Biology-Phytoplankton-Greater-NorthSea*
 
 # EMODnet-Biology-Phytoplankton-Baltic
 Analysis of phytoplankton species in the Baltic Sea
@@ -46,6 +46,8 @@ Data was derived from the:
  - Swedish part of the Baltic Sea
  - German part of the Baltic Sea
  - Danish part of the Baltic Sea
+
+https://github.com/sharksmhi/EMODnet-Biology-Phytoplankton-Baltic/blob/master/data/derived_data/regionsOfInterest_preliminary.png
  
 The following datasets were used:
 - [x] "785 Continuous Plankton Recorder (Phytoplankton)"
