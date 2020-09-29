@@ -18,6 +18,12 @@ Startup requirements:
 Questions can be addressed to shark@smhi.se
 
 ## Information on input data and preprocessing
+Raw data were downloaded from EMODnet Biology using WFS requests. This was done in two steps.
+
+1. Per subregion, all observations of species with the trait "phytoplankton" or "Phytoplankton" were extracted.
+
+2. Because of uncertainties in extracting all phytoplankton species (due to absence of traits for example) all data was extracted for these datasets. Within these datasets phyla were selected that contain phytoplankton species, after which a manual selection was performed to filter out non-phytoplankton species also belonging to these phyla (e.g. macroalgae).
+
 Data was derived from the:
  - Estonian part of the Gulf of Finland
  - Danish part of the Skaggerak
