@@ -42,18 +42,18 @@ Data was derived from the:
  - Danish part of the Baltic Sea
  
 The following datasets were used:
-"785 Continuous Plankton Recorder (Phytoplankton)"
-"2453 SHARK - Marine phytoplankton monitoring in Sweden since 1983"
-"2722 PANGAEA - Data from various sources"
-"4424 ICES Phytoplankton Community dataset"
-"5664 Phytoplankton data for Danish marine monitoring (ODAM) from 1988 - 2016"
-"2463 Polish Monitoring Programme - Monitoring of the Baltic Sea: phytoplankton"
-"5724 Finnish Baltic Sea phytoplankton monitoring, KPLANK database"
-"5727 SHARK - Regional monitoring and monitoring projects of Epibenthos in Sweden since 1994"
-"2455 SHARK - National Epibenthos monitoring in Sweden since 1992"
-"1985 NODC World Ocean Database 2001: Plankton Data"
-"5840 IFCB110-SMHI: Imaging flow cytometry from SMHI in Tangesund 2016"
-"6021 Phytoplankton composition, biomass and abundance in Estonian territorial waters 1993-2016"
+- [x] "785 Continuous Plankton Recorder (Phytoplankton)"
+- [x] "2453 SHARK - Marine phytoplankton monitoring in Sweden since 1983"
+- [x] "2722 PANGAEA - Data from various sources"
+- [x] "4424 ICES Phytoplankton Community dataset"
+- [x] "5664 Phytoplankton data for Danish marine monitoring (ODAM) from 1988 - 2016"
+- [x] "2463 Polish Monitoring Programme - Monitoring of the Baltic Sea: phytoplankton"
+- [x] "5724 Finnish Baltic Sea phytoplankton monitoring, KPLANK database"
+- [x] "5727 SHARK - Regional monitoring and monitoring projects of Epibenthos in Sweden since 1994"
+- [x] "2455 SHARK - National Epibenthos monitoring in Sweden since 1992"
+- [x] "1985 NODC World Ocean Database 2001: Plankton Data"
+- [x] "5840 IFCB110-SMHI: Imaging flow cytometry from SMHI in Tangesund 2016"
+- [x] "6021 Phytoplankton composition, biomass and abundance in Estonian territorial waters 1993-2016"
 
 The timespan used was "1995-01-01" until "2020-05-31"
 
