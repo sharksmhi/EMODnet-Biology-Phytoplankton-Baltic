@@ -1,4 +1,4 @@
-### Biological data preprocessing by Markus Lindh, original scripts by Luuk van der Heijden developed for processing North Sea phytoplankton data
+*Biological data preprocessing by Markus Lindh, original scripts by Luuk van der Heijden developed for processing North Sea phytoplankton data*
 
 # EMODnet-Biology-Phytoplankton-Baltic
 Analysis of phytoplankton species in the Baltic Sea
@@ -8,12 +8,12 @@ This is the Github repository of the EMODnet Biology product described here:
 
 ## Information on how to use the R code
 Startup requirements:
-1.) Create a new R project in R Studio
-2.) Save R Markdown files in the main folder of the R project
-3.) Create a folder called "data" and subfolders "derived_data" and "raw_data"
-4.) In the subfolder "raw_data" create two additional subfolders called "byDataset" and "byTrait"
-5.) Run R code using the R Markdown files .Rmd in sequence, i.e. 1a, 1b, 2, 3 and 4a. Using the "knit" function in R Studio will run the scripts, save output data and produce html output for Rmd files 1a, 1b, 2 and 3 while a pdf output is created when running Rmd file 4a.
-6.) Follow the instructions and annotations in the respective R Markdown files
+1. Create a new R project in R Studio
+2. Save R Markdown files in the main folder of the R project
+3. Create a folder called "data" and subfolders "derived_data" and "raw_data"
+4. In the subfolder "raw_data" create two additional subfolders called "byDataset" and "byTrait"
+5. Run R code using the R Markdown files .Rmd in sequence, i.e. 1a, 1b, 2, 3 and 4a. Using the "knit" function in R Studio will run the scripts, save output data and produce html output for Rmd files 1a, 1b, 2 and 3 while a pdf output is created when running Rmd file 4a.
+6. Follow the instructions and annotations in the respective R Markdown files
 
 Questions can be addressed to shark@smhi.se
 
