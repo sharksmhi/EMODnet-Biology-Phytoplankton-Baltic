@@ -47,7 +47,7 @@ Data was derived from the:
  - German part of the Baltic Sea
  - Danish part of the Baltic Sea
 
-https://github.com/sharksmhi/EMODnet-Biology-Phytoplankton-Baltic/blob/master/data/derived_data/regionsOfInterest_preliminary.png
+https://github.com/sharksmhi/EMODnet-Biology-Phytoplankton-Baltic/blob/master/data/derived_data/regionsOfInterest_preliminary.png?raw=true
  
 The following datasets were used:
 - [x] "785 Continuous Plankton Recorder (Phytoplankton)"
