@@ -57,4 +57,4 @@ The following datasets were used:
 
 The timespan used was "1995-01-01" until "2020-05-31"
 
-This preprocessing resulted in a aggregated dataset corresponding to 2021 unique species in 16444 unique locations (lat and long).
+### This preprocessing resulted in a aggregated dataset corresponding to 2021 unique species in 16444 unique locations (lat and long).
