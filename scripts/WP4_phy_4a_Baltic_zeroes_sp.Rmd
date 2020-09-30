@@ -8,26 +8,26 @@ output:
 geometry: "left=1cm, right=1cm, top=0cm, bottom=0cm"
 params:
 # targetSpecies: "Nitzschia longissima" ## Change species depending on preference, this is a pre-selection of species:
-  targetSpecies: "Nodularia spumigena" 
-# targetSpecies: "Aphanizomenon flosaquae f. gracile"
-# targetSpecies: "Aphanothece paralleliformis"
-# targetSpecies: "Heterocapsa rotundata"
-# targetSpecies: "Chaetoceros castracanei"
-# targetSpecies: "Peridiniella catenata"
-# targetSpecies: "Binuclearia lauterbornii"
-# targetSpecies: "Mesodinium rubrum"
-# targetSpecies: "Dinobryon balticum"
-# targetSpecies: "Pseudanabaena limnetica"
-# targetSpecies: "Skeletonema marinoi"
-# targetSpecies: "Pseudo-nitzschia delicatissima"
-# targetSpecies: "Emiliania huxleyi"
-# targetSpecies: "Dinophysis norvegica"
-# targetSpecies: "Octactis speculum"
-# targetSpecies: "Pseudochattonella verruculosa"
-# targetSpecies: "Alexandrium minutum"
-# targetSpecies: "Chaetoceros wighamii"
-# targetSpecies: "Thalassiosira pseudonana"
-# targetSpecies: "Karenia mikimotoi"
+#  targetSpecies: "Nodularia spumigena" 
+#  targetSpecies: "Aphanizomenon flosaquae f. gracile"
+#  targetSpecies: "Aphanothece paralleliformis"
+#  targetSpecies: "Heterocapsa rotundata"
+#  targetSpecies: "Chaetoceros castracanei"
+#  targetSpecies: "Peridiniella catenata"
+#  targetSpecies: "Binuclearia lauterbornii"
+#  targetSpecies: "Mesodinium rubrum"
+#  targetSpecies: "Dinobryon balticum"
+#  targetSpecies: "Pseudoanabaena limnetica" #Not found, taxonomy changed?
+#  targetSpecies: "Skeletonema marinoi"
+#  targetSpecies: "Pseudo-nitzschia delicatissima"
+#  targetSpecies: "Emiliania huxleyi"
+#  targetSpecies: "Dinophysis norvegica"
+#  targetSpecies: "Octactis speculum"
+#  targetSpecies: "Pseudochattonella verruculosa"
+#  targetSpecies: "Alexandrium minutum"
+#  targetSpecies: "Chaetoceros wighamii"
+#  targetSpecies: "Thalassiosira pseudonana"
+  targetSpecies: "Karenia mikimotoi"
   begin: 1995
   end: 2020
   gridX: 35000
@@ -51,7 +51,7 @@ require(rgeos)
 load(file.path("data/derived_data/phy_sp.Rdata"))
 # Remove the duplicates that have the same location and time of sampling (between different datasets)
 phy_sp <- phy_sp %>%
-  select(aphiaid, scientificnameaccepted, date, datasetID, mrgid, eventid, month, year, season, xUTM, yUTM, occurrence) 
+  select(aphiaid, scientificnameaccepted, date, datasetID, mrgid, eventid, month, year, season, xUTM, yUTM, occurrence)
 ```
 
 # Create data analysis functions
@@ -269,4 +269,3 @@ Sys.time()
 # Here we store the session info for this script
 sessioninfo::session_info()
 ```
-
