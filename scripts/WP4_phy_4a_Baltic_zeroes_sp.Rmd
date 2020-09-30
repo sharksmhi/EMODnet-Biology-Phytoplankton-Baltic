@@ -7,8 +7,8 @@ output:
       latex_engine: pdflatex
 geometry: "left=1cm, right=1cm, top=0cm, bottom=0cm"
 params:
-  targetSpecies: "Nitzschia longissima" ## Change species depending on preference, this is a pre-selection of species
-# targetSpecies: "Nodularia spumigena" 
+# targetSpecies: "Nitzschia longissima" ## Change species depending on preference, this is a pre-selection of species:
+  targetSpecies: "Nodularia spumigena" 
 # targetSpecies: "Aphanizomenon flosaquae f. gracile"
 # targetSpecies: "Aphanothece paralleliformis"
 # targetSpecies: "Heterocapsa rotundata"
@@ -49,8 +49,6 @@ require(rworldxtra)
 require(rgeos)
 # Load phy data set from working directory
 load(file.path("data/derived_data/phy_sp.Rdata"))
-# What species can we choose from?
-sort(unique(phy_sp$scientificnameaccepted))
 # Remove the duplicates that have the same location and time of sampling (between different datasets)
 phy_sp <- phy_sp %>%
   select(aphiaid, scientificnameaccepted, date, datasetID, mrgid, eventid, month, year, season, xUTM, yUTM, occurrence) 
@@ -68,7 +66,7 @@ completeZeros_sp <- function(df, species, year){
   df %>%
     dplyr::filter(year %in% year) %>%
     dplyr::filter(datasetID %in% selectedDatasets) %>%
-    group_by(datasetID, year) %>% #deleted abbr!
+    group_by(datasetID, year) %>% 
     tidyr::complete(nesting(aphiaid, scientificnameaccepted),         # these will be completed, with their occurrence
                     nesting(date, xUTM, yUTM, season, eventid),   # Combinations of these parameters are to be found
                     fill = list(occurrence = 0)) %>% 
@@ -89,7 +87,7 @@ co2gr <- function(lon,lat,fdx,fdy){
   ygrid <- ygrid-mny+1
   xgm <- max(xgrid)
   ygm <- max(ygrid)
-  middleXgrid <- (xgrid + mnx - 1)*fdx + (fdx/2)  # Hier bereken ik het middelpunt, deze formule komt uit gr2co (zie hieronder)
+  middleXgrid <- (xgrid + mnx - 1)*fdx + (fdx/2)  
   middleYgrid <- (ygrid + mny - 1)*fdy + (fdy/2)
   gridnr <- (ygrid-1)*xgm+xgrid
   return(data.frame(gridnr, middleXgrid, middleYgrid))
@@ -98,7 +96,7 @@ co2gr <- function(lon,lat,fdx,fdy){
 # Create data for time series plot including effort
 time_effort <- function(df) {
   df %>% ungroup() %>%
-    group_by(datasetID, year, season) %>% # deleted abbr!
+    group_by(datasetID, year, season) %>% 
     summarize(effort_per_season = n(), positives = sum(occurrence == 1)) %>%
     mutate(rel_abun = positives/effort_per_season) %>% ungroup() %>%
     mutate(season = factor(season, levels = rev(c("autumn", "summer", "spring", "winter")))) 
@@ -107,7 +105,7 @@ time_effort <- function(df) {
 # Create dataset for effort plot
 effort_function <- function(df, tax_level){
   df %>% ungroup() %>%
-    group_by(gridnr, middleXgrid, middleYgrid) %>%  # alle bewerkingen per grid cell en aphiaID
+    group_by(gridnr, middleXgrid, middleYgrid) %>% 
     summarise(effort = n_distinct(eventid),
               effort_n = n(),
               pres_abse = mean(occurrence)) %>%
@@ -116,7 +114,7 @@ effort_function <- function(df, tax_level){
 
 effort_season <- function(df){
   df %>% ungroup() %>%
-    group_by(gridnr, season, middleXgrid, middleYgrid) %>%  # alle bewerkingen per grid cell en aphiaID
+    group_by(gridnr, season, middleXgrid, middleYgrid) %>% 
     summarise(effort = n_distinct(eventid),
               effort_n = n(),
               pres_abse = mean(occurrence)) %>%
@@ -185,10 +183,11 @@ plot_ts_eff <- function(df, sp_gen, begin, end) {
                breaks = c(0,1,10,50,100,200), labels = c(0,1,10,50,100,200), limits = c(0,200)) +
     scale_colour_continuous("Relative abundance", type = "viridis") +
     scale_x_continuous(limits = c(begin, end)) +
-    # facet_grid(abbr ~ .) + # why facetting if we only have one species?
+    # facet_grid(abbr ~ .) + 
     theme(strip.text.y = element_text(angle = 0),
           legend.position = "bottom") +
-    labs(subtitle = sp_gen, x = "Year", y = "Season")
+    labs(subtitle = sp_gen, x = "Year", y = "Season") +
+    theme_bw()
 }
 
 # Plot 1b: plot the occurrence over season for each species including the effort
@@ -198,7 +197,8 @@ plot_season_eff <- function(df, sp_gen, begin, end) {
     scale_size("Effort per season", range = c(0.25,3.5), 
                breaks = c(0,1,10,50,100,200), labels = c(0,1,10,50,100,200), limits = c(0,200)) +
     theme(strip.text.y = element_text(angle = 0),legend.position = "bottom") +
-    labs(subtitle = sp_gen, x = "Season", y = "relative abun")
+    labs(subtitle = sp_gen, x = "Season", y = "relative abun") +
+    theme_bw()
 }
 
 # Plot 2a: the presence/absence map (points on grid raster) including effort (as size)
@@ -212,7 +212,7 @@ plot_abun_point <- function(df, pres_abse, Size, long, lat, speciesName, borderx
     #guides(colour = guide_legend(override.aes = list(breaks = c(0.0,0.25,0.5,0.75,1.0)))) +
     labs(title = speciesName, x = "Longitude", y = "Latitude") + 
     geom_sf(data = bgmap, fill = "darkgrey")  +
-    theme(panel.background = element_rect(fill = "lightgrey"),
+    theme(panel.background = element_rect(fill = "white"),
           panel.grid = element_line(color = "black")) +
     coord_sf(xlim = c(borderx_min, borderx_max), ylim = c(bordery_min, bordery_max)) 
 }
@@ -227,20 +227,11 @@ plot_abun_point_season <- function(df, pres_abse, Size, long, lat, speciesName, 
     labs(title = speciesName, x = "Longitude", y = "Latitude") + 
     facet_wrap(~season, nrow = 2) +
     geom_sf(data = bgmap, fill = "darkgrey")  +
-    theme(panel.background = element_rect(fill = "lightgrey"),
+    theme(panel.background = element_rect(fill = "white"),
           panel.grid = element_line(color = "black", size = 0.1),
-          legend.position = "bottom",
-          text = element_text(size=20)) +
+          text = element_text(size=22)) +
     coord_sf(xlim = c(borderx_min, borderx_max), ylim = c(bordery_min, bordery_max))
 }
-```
-
-# Time series of data availability per season including effort for each dataset where the species was observed. 
-
-```{r plot1a, echo=FALSE, fig.height = height_plot1, fig.fullwidth = TRUE, warning=FALSE, results='asis', dpi = 184}
-# Plot 1a: plot the relative abundance per season / per year for each species and dataset + EFFORT
-plot_ts_eff(phy_ts_eff, params$targetSpecies, params$begin, params$end)
-ggsave(paste("data/derived_data/",params$targetSpecies, "_plot_ts_eff.pdf",sep=""))
 ```
 
 # Average distribution per season
@@ -248,28 +239,28 @@ ggsave(paste("data/derived_data/",params$targetSpecies, "_plot_ts_eff.pdf",sep="
 ```{r plot1b, echo=FALSE, fig.height = 3, fig.width = 6, warning=FALSE, results='asis', dpi = 184}
 # Plot 1b: plot the relative abundance per season 
 plot_season_eff(phy_ts_eff, params$targetSpecies, params$begin, params$end)
-ggsave(paste("data/derived_data/",params$targetSpecies, "_plot_season_eff.pdf",sep=""))
+#ggsave(paste("data/derived_data/",params$targetSpecies, "_plot_season_eff.pdf",sep=""))
 ```
 
-# Distribution map 2a: presence/absence points with effort (as color)
+# Distribution map: presence/absence points with effort (as color)
 
 ```{r plot2a, echo=FALSE, fig.height = 6, fig.width = 9, warning=FALSE, results='asis', dpi = 184}
 # Plot 2a: the presence/absence map (points on grid raster) including effort
 plot_abun_point(df = phy_effort, pres_abse = "pres_abse", Size = "effort", long = "middleXgrid",
                 lat = "middleYgrid", params$targetSpecies, 
                 params$borderx_min, params$borderx_max, params$bordery_min, params$bordery_max)
-ggsave(paste("data/derived_data/",params$targetSpecies, "_plot_abun_point.pdf",sep=""))
+#ggsave(paste("data/derived_data/",params$targetSpecies, "_plot_abun_point.pdf",sep=""))
 ```
 
-# Distribution map 2b: presence/absence points with effort (as color) per season
+# Distribution map: presence/absence points with effort (as color) per season
 ```{r plot2b, echo=FALSE, fig.height = 12, fig.width = 16, warning=FALSE, results='asis', dpi = 184}
 # Plot 2b: the presence/absence map (points on grid raster) per season
 plot_abun_point_season(df = phy_effort_season, "pres_abse", "effort", "middleXgrid", "middleYgrid", params$targetSpecies, 
                 params$borderx_min, params$borderx_max, params$bordery_min, params$bordery_max)
-ggsave(paste("data/derived_data/",params$targetSpecies, "_plot_abun_point_season.pdf",sep=""))
+#ggsave(paste("data/derived_data/",params$targetSpecies, "_plot_abun_point_season.pdf",sep=""))
 ```
 
-## Reproducibility
+# Reproducibility
 
 ```{r reproducibility}
 # Date time
@@ -278,3 +269,4 @@ Sys.time()
 # Here we store the session info for this script
 sessioninfo::session_info()
 ```
+
